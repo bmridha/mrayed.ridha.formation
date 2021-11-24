@@ -31,7 +31,7 @@ class ArticleController extends Controller
             'order' => 'required|numeric',
             'is_active' => 'required|boolean',
         ]);
-        if($validated)
+        if($validated->fails())
         
         {$article = new Article;
         $article->titre = $request->titre;
