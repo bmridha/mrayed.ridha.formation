@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
-use response;
 use Illuminate\Http\Request;
+use response;
 use App\Models\Article;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ArticleCreateRequest;
+use Illuminate\Support\Facades\Validator;
 
 class ArticleController extends Controller
 {
@@ -24,22 +25,23 @@ class ArticleController extends Controller
             ]]);
     }
 
-    public function store(Request $request)
+    public function store(ArticleCreateRequest $request)
     {
-        /*$validated = $request->validate([
-            'title' => 'required|min:2',
-            'order' => 'required|numeric',
-            'is_active' => 'required|boolean',
-        ]);
-        if($validated->fails())*/
 
-        $article = new Article;
-        $article->titre = $request->titre;
-        $article->description = $request->description;
-        $article->order = $request->order;
-        $article->is_active = $request->is_active;
-        $article->save();
-        return response()->json([200 => 'Article ajouté avec succès']);
+
+
+
+            $article = new Article;
+            $article->titre = $request->titre;
+            $article->description = $request->description;
+            $article->order = $request->order;
+            $article->is_active = $request->is_active;
+            $article->save();
+            return response()->json([200 => 'Article ajouté avec succès']);
+
+
+
+
 
     }
 
